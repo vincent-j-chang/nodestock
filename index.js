@@ -1,3 +1,5 @@
+// Stock Market Portfolio App by Vincent Chang
+
 const express = require('express');
 const app = express();
 const exphbs  = require('express-handlebars');
@@ -21,7 +23,7 @@ app.get('/', function (req, res) {
 
 app.use(express.static(path.join(__dirname, 'public')));
 // Set static folder to create a path and route
-// include the path variable at the top
+// include the path variable at the top                   
 
 
 app.listen(PORT, () => console.log('Server Listening on port ' + PORT));
