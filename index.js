@@ -15,8 +15,8 @@ const PORT = process.env.PORT || 5000;
 
 // API KEY pk_662c636e819146319df2e6cd25f0e9e7
 // create call_api function
-function call_api(finishedAPI) {
-    request('https://cloud.iexapis.com/stable/stock/fb/quote?token=pk_662c636e819146319df2e6cd25f0e9e7',
+function call_api(finishedAPI, ticker) {
+    request('https://cloud.iexapis.com/stable/stock/' +  ticker + '/quote?token=pk_662c636e819146319df2e6cd25f0e9e7',
     {json: true}, (err, res, body) => {
     
     if (err) {return console.log(err);}
@@ -48,12 +48,12 @@ app.get('/', function (req, res) {
 // "/" means the homepage
 app.post('/', function (req, res) {
     call_api(function(doneAPI) {
-        posted_stuff = req.body.stock_ticker;
+        //posted_stuff = req.body.stock_ticker;
         res.render('home', {
             stock: doneAPI,
-            posted_stuff: posted_stuff
+            
         });
-    });   
+    }, req.body.stock_ticker);   
 });
 
 
