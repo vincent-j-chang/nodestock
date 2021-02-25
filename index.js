@@ -7,11 +7,13 @@ const path = require('path')
 const request = require('request')
 const bodyParser = require('body-parser');
 
-// use body parser middleware
-app.use(bodyParser.urlencoded({extended: false}));
+
 
 // use the default port in their settings OR use 5000
 const PORT = process.env.PORT || 5000;
+
+// use body parser middleware
+app.use(bodyParser.urlencoded({extended: false}));
 
 // API KEY pk_662c636e819146319df2e6cd25f0e9e7
 // create call_api function
@@ -26,7 +28,7 @@ function call_api(finishedAPI, ticker) {
         };
     });
 
-    };
+};
 
 
 // Set Handlebars Middleware
