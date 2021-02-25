@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 // API KEY pk_662c636e819146319df2e6cd25f0e9e7
 // create call_api function
 function call_api(finishedAPI, ticker) {
-    request('https://cloud.iexapis.com/stable/stock/' +  ticker + '/quote?token=pk_662c636e819146319df2e6cd25f0e9e7',
+    request('https://cloud.iexapis.com/stable/stock/' + ticker + '/quote?token=pk_662c636e819146319df2e6cd25f0e9e7',
     {json: true}, (err, res, body) => {
     
     if (err) {return console.log(err);}
@@ -40,10 +40,10 @@ app.set('view engine', 'handlebars');
 // "/" means the homepage
 app.get('/', function (req, res) {
     call_api(function(doneAPI) {
-        res.render('home', {
+            res.render('home', {
             stock: doneAPI
         });
-    });   
+    }, "fb");   
 });
 
 // Set handlebar index POST routes
